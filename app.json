@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "01_recurly_revive",
-    "slug": "01_recurly_revive",
+    "name": "revive",
+    "slug": "recurly_revive",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
