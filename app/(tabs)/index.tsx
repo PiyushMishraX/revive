@@ -14,3 +14,5 @@ export default function App() {
     </View>
   );
 }
+
+// Moving the index.tsx too // its our home tab , index.tsx maps to root of the root , if it isn't in app still it would be reached
