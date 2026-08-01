@@ -9,7 +9,8 @@ const TabLayout = () => (
         <Tabs.Screen name="index" options={{ title: 'Home'}} />
         <Tabs.Screen name="subscription" options={{ title: 'Subscription'}} />
         <Tabs.Screen name="insights" options={{ title: 'Insights'}} />
-        <Tabs.Screen name="settingz" options={{ title: 'Settings'}} />
+        <Tabs.Screen name="settings" options={{ title: 'Settings'}} />
+        <Tabs.Screen name="subscriptions/[id]" options={{ href: null }} /> {/* Hidden from bottom navigation bar  */}
     </Tabs>
 )
 
