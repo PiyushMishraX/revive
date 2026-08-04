@@ -3,6 +3,10 @@ import { Tabs } from "expo-router"
 import { View } from "react-native";
 import clsx from "clsx"
 import {Image} from "expo-image"
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { colors, components } from "@/constants/theme";
+
+const tabBar = components.tabBar;
 
 // const TabLayout = () => {
 //     return <Tabs></Tabs>
@@ -21,6 +25,8 @@ import {Image} from "expo-image"
 
 // clsx to join different classes together
 const TabLayout = () => {
+    const insets = useSafeAreaInsets();
+
     const TabIcon = ({focused, icon}: TabIconProps) => {
         return (
             <View className="tabs-icon">
@@ -33,7 +39,22 @@ const TabLayout = () => {
     };
 
     return (
-        <Tabs screenOptions={{headerShown: false}}>
+        <Tabs 
+            screenOptions={{
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarStyle: {
+                    position: 'absolute',
+                    bottom: Math.max(insets.bottom,tabBar.horizontalInset ),
+                    height: tabBar.height,
+                    marginHorizontal: tabBar.horizontalInset,
+                    borderRadius: tabBar.radius,
+                    backgroundColor: colors.primary,
+                    borderTopWidth: 0,
+                    elevation: 0,
+                },
+            }}
+        >
             {tabs.map((tab) => (
                 <Tabs.Screen
                     key={tab.name}
@@ -45,6 +66,11 @@ const TabLayout = () => {
                         )
                     }}/>
             ))}
+
+            <Tabs.Screen 
+                name="subscriptions/[id]" 
+                options={{ href: null }} 
+            />
         </Tabs>
     )
 }
