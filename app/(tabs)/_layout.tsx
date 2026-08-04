@@ -2,7 +2,7 @@ import { tabs } from "@/constants/data"
 import { Tabs } from "expo-router"
 import { View } from "react-native";
 import clsx from "clsx"
-import {Image} from "expo-image"
+import {Image} from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { colors, components } from "@/constants/theme";
 
@@ -32,7 +32,10 @@ const TabLayout = () => {
             <View className="tabs-icon">
                 <View className={clsx('tabs-pill', focused &&
                 'tabs-active')}>
-                    <Image source={icon} className="tabs-glyph"/>
+                    {/* <Image source={icon} className="tabs-glyph"/>  */}
+                    {/* the do not shows icon beacuse the Image component imported is commin from expo-Image instead of react-native  so changing that  */}
+
+                    <Image source={icon} resizeMode="contain" className="tabs-glyph"/>
                 </View>
             </View>
         );
@@ -53,6 +56,14 @@ const TabLayout = () => {
                     borderTopWidth: 0,
                     elevation: 0,
                 },
+                tabBarItemStyle: {
+                    paddingVertical: tabBar.height / 2 - tabBar.iconFrame /1.6
+                },
+                tabBarIconStyle: {
+                    width: tabBar.iconFrame,
+                    height: tabBar.iconFrame,
+                    alignItems: 'center',
+                }
             }}
         >
             {tabs.map((tab) => (
