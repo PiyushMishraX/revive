@@ -1,0 +1,6 @@
+// centalize image import
+import splashPattern from "@/assets/icons/splash-pattern.png";
+import avatar from '@/assets/images/avatar.png';
+
+
+export default { splashPattern , avatar }
