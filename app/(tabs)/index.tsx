@@ -3,34 +3,47 @@ import { Link } from "expo-router";
 import { Text } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 import { styled } from "nativewind";
+import { View } from "react-native";
+import images from "@/constants/images"
  
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
   return (
     // <View className="flex-1 items-center justify-center bg-background">
-    <SafeAreaView className="flex-1 bg-background p-5">
+    // <SafeAreaView className="flex-1 bg-background p-5">
 
-      <Text className="text-5xl font-sans-extrabold text-success">Home</Text>
-      {/* <Text className="text-7xl font-bold text-success">Home</Text> */}
+      // {/* <Text className="text-5xl font-sans-extrabold text-success">Home</Text> */}
+      // {/* <Text className="text-7xl font-bold text-success">Home</Text> */}
 
-      <Link href="/onboarding" className="mt-4 font-sans-bold rounded bg-primary text-white p-4" >Go to Onboarding</Link>
-      <Link href="/(auth)/sign-in" className="mt-4 font-sans-bold rounded bg-primary text-white p-4" >Go to Sign in</Link>
-      <Link href="/(auth)/sign-up" className="mt-4 font-sans-bold rounded bg-primary text-white p-4" >Go to Sign up</Link>
+      // {/* <Link href="/onboarding" className="mt-4 font-sans-bold rounded bg-primary text-white p-4" >Go to Onboarding</Link>
+      // <Link href="/(auth)/sign-in" className="mt-4 font-sans-bold rounded bg-primary text-white p-4" >Go to Sign in</Link>
+      // <Link href="/(auth)/sign-up" className="mt-4 font-sans-bold rounded bg-primary text-white p-4" >Go to Sign up</Link> */}
 
-      {/* <Link href="/subscriptions/spotify">Spotify SUbscription</Link>
-      <Link
-        href={{
-          pathname: "/subscriptions/[id]",
-          params: { id: "chatgpt" },
-        }}
-        >
-        GPT pro subscriptions
-      </Link> */}
+      // {/* <Link href="/subscriptions/spotify">Spotify SUbscription</Link>
+      // <Link
+      //   href={{
+      //     pathname: "/subscriptions/[id]",
+      //     params: { id: "chatgpt" },
+      //   }}
+      //   >
+      //   GPT pro subscriptions
+      // </Link> */}
 
 
-    </SafeAreaView>
+    // </SafeAreaView>
     // </View>
+
+    <SafeAreaView className="flex-1 bg-background p-5">
+      <View className="home-header">
+          <View className="home-user">
+            <Image source={images.avatar} className="home-avatar" />
+          </View>
+      </View>
+    </SafeAreaView>
+
+
+
   );
 }
 
