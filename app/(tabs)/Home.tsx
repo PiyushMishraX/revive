@@ -4,14 +4,17 @@ import { Text, View, Image } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 import { styled } from "nativewind";
 import images from "@/constants/images"
-import { HOME_BALANCE, HOME_USER } from "@/constants/data";
+import { HOME_BALANCE, HOME_USER, UPCOMING_SUBSCRIPTIONS } from "@/constants/data";
 import { icons } from "@/constants/icons";
 import { formatCurrency } from "@/lib/utils";
 import dayjs from "dayjs";
+import ListHeading from "@/components/ListHeading";
+import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
  
 const SafeAreaView = styled(RNSafeAreaView);
 
-export default function App() {
+// export default function App() {
+const Home = () => {
   return (
     // <View className="flex-1 items-center justify-center bg-background">
     // <SafeAreaView className="flex-1 bg-background p-5">
@@ -47,7 +50,7 @@ export default function App() {
             <Image source={icons.add} className="home-add-icon" />
       </View>
 
-      <View className="home-balance">
+      <View className="home-balance-card">
         <Text className="home-balance-label">Balance</Text>
 
         <View className="home-balance-row" >
@@ -59,6 +62,16 @@ export default function App() {
           </Text>
         </View>
       </View>
+
+      <View >
+        <ListHeading title="Upcoming"/>
+        <UpcomingSubscriptionCard data={UPCOMING_SUBSCRIPTIONS[0]} />
+      </View>
+
+      <View >
+        <ListHeading title="All Subscription"/>
+      </View>
+
     </SafeAreaView>
 
 
@@ -67,3 +80,6 @@ export default function App() {
 }
 
 // Moving the index.tsx too // its our home tab , index.tsx maps to root of the root , if it isn't in app still it would be reached
+
+
+export default Home

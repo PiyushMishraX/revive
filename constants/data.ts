@@ -9,7 +9,7 @@ export const tabs: AppTab[] = [
 
 // dummy data
 export const HOME_USER = {
-    name: "Adrian | JS Mastery",
+    name: "Piyush | React Native",
 };
 
 export const HOME_BALANCE = {
