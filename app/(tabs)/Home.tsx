@@ -10,6 +10,7 @@ import { formatCurrency } from "@/lib/utils";
 import dayjs from "dayjs";
 import ListHeading from "@/components/ListHeading";
 import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
+import { FlatList } from "react-native-reanimated/lib/typescript/Animated";
  
 const SafeAreaView = styled(RNSafeAreaView);
 
@@ -65,7 +66,17 @@ const Home = () => {
 
       <View >
         <ListHeading title="Upcoming"/>
-        <UpcomingSubscriptionCard data={UPCOMING_SUBSCRIPTIONS[0]} />
+        {/* <UpcomingSubscriptionCard data={UPCOMING_SUBSCRIPTIONS[0]} /> */}
+        <FlatList 
+          data={UPCOMING_SUBSCRIPTIONS}
+          renderItem={({ item })=>(
+            <UpcomingSubscriptionCard {...item} />
+          )}
+          keyExtractor={(item)=> item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={<Text className="home-empty-state">No upcoming renewls yet...</Text>}
+        />
       </View>
 
       <View >
@@ -73,8 +84,6 @@ const Home = () => {
       </View>
 
     </SafeAreaView>
-
-
 
   );
 }
