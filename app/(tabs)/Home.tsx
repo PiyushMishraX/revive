@@ -1,16 +1,16 @@
 import "@/global.css"
 import { Link } from "expo-router";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, FlatList } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 import { styled } from "nativewind";
 import images from "@/constants/images"
-import { HOME_BALANCE, HOME_USER, UPCOMING_SUBSCRIPTIONS } from "@/constants/data";
+import { HOME_BALANCE, HOME_SUBSCRIPTIONS, HOME_USER, UPCOMING_SUBSCRIPTIONS } from "@/constants/data";
 import { icons } from "@/constants/icons";
 import { formatCurrency } from "@/lib/utils";
 import dayjs from "dayjs";
 import ListHeading from "@/components/ListHeading";
 import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
-import { FlatList } from "react-native-reanimated/lib/typescript/Animated";
+import SubscriptionCard from "@/components/SubscriptionCard";
  
 const SafeAreaView = styled(RNSafeAreaView);
 
@@ -81,6 +81,7 @@ const Home = () => {
 
       <View >
         <ListHeading title="All Subscription"/>
+        <SubscriptionCard {...HOME_SUBSCRIPTIONS[0]} />
       </View>
 
     </SafeAreaView>

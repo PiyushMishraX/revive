@@ -1,4 +1,4 @@
-import Home from './(tabs)/home'
+import Home from "./(tabs)/Home";
 
  export default function App() {
   return (
