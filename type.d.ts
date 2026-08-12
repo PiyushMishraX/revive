@@ -29,8 +29,9 @@ declare global {
     }
 
     interface SubscriptionCardProps extends Omit<Subscription, "id"> {
-        expanded?: boolean;
-        onPress?: () => void;
+        expanded?: boolean; // using ? for now
+        onPress?: () => void; // using ? for now
+        
         onCancelPress?: () => void;
         isCancelling?: boolean;
     }
