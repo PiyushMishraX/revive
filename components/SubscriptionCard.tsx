@@ -3,7 +3,7 @@ import React from 'react'
 import { formatCurrency, formatSubscriptionDateTime } from '@/lib/utils'
 import clsx from 'clsx'
 
-const SubscriptionCard = ({ name, price, currency, icon, billing, color,category, plan, renewalDate, expanded, onPress}: SubscriptionCardProps) => {
+const SubscriptionCard = ({ name, price, currency, icon, billing, color,category, plan, renewalDate, expanded, onPress, paymentMethod}: SubscriptionCardProps) => {
   return (
     <Pressable onPress={onPress} className={clsx('sub-card', expanded ? 'sub-card-expanded': 'bg-card')} style={!expanded && color ? {backgroundColor: color } : undefined }>
         <View className='sub-head'>
@@ -24,6 +24,19 @@ const SubscriptionCard = ({ name, price, currency, icon, billing, color,category
                 <Text className='sub-billing'>{billing}</Text>
             </View>
         </View>
+
+        {expanded && (
+            <View className='sub-body' >
+                <View className='sub-details'>
+                    <View className='sub-row'>
+                        <View className='sub-row-copy'>
+                            <Text className='sub-label'>Payment:</Text>
+                            <Text className='sub-value' numberOfLines={1} ellipsizeMode='tail'>{paymentMethod?.trim()}</Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        )}
     </Pressable>
   )
 }
