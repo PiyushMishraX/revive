@@ -4,6 +4,8 @@ import '@/global.css'
 import {useFonts} from "expo-font"
 import { useEffect } from "react";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
   // loading main font before the loading of appp
   const [fontsLoaded] = useFonts({

@@ -154,7 +154,7 @@ const Home = () => {
                 />
               </View>
 
-              <ListHeading title="All Subscription"/>
+              <ListHeading title="All Subscriptions"/>
             </>
           )}
 
@@ -169,6 +169,7 @@ const Home = () => {
           ItemSeparatorComponent={()=> <View className="h-4" />}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={<Text className="home-empty-state">No subscriptions yet..</Text>}
+          contentContainerClassName="pb-30"
         />
     </SafeAreaView>
 
