@@ -1,10 +1,12 @@
 import { tabs } from "@/constants/data"
-import { Tabs } from "expo-router"
-import { View } from "react-native";
+import { Tabs, useRouter } from "expo-router"
+import { View, ActivityIndicator } from "react-native";
 import clsx from "clsx"
 import {Image} from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { colors, components } from "@/constants/theme";
+import { useAuth } from "@clerk/expo";
+import { useEffect } from "react";
 
 const tabBar = components.tabBar;
 
@@ -26,6 +28,24 @@ const tabBar = components.tabBar;
 // clsx to join different classes together
 const TabLayout = () => {
     const insets = useSafeAreaInsets();
+    const { isLoaded, isSignedIn } = useAuth();
+    const router = useRouter();
+
+    // Auth guard at the (tabs) group level: NavigationContext is definitely
+    // available here, which avoids Expo Router crashes during --tunnel startup.
+    useEffect(() => {
+        if (isLoaded && !isSignedIn) {
+            router.replace('/(auth)/sign-in');
+        }
+    }, [isLoaded, isSignedIn, router]);
+
+    if (!isLoaded) {
+        return (
+            <View className="flex-1 items-center justify-center bg-background">
+                <ActivityIndicator size="large" color="#ea7a53" />
+            </View>
+        );
+    }
 
     const TabIcon = ({focused, icon}: TabIconProps) => {
         return (
@@ -78,12 +98,13 @@ const TabLayout = () => {
                     }}/>
             ))}
 
-            <Tabs.Screen 
-                name="subscriptions/[id]" 
-                options={{ href: null }} 
+            {/* Per-subscription detail screen. Hidden from tab bar (pushable) */}
+            <Tabs.Screen
+                name="subscriptions/[id]"
+                options={{ href: null }}
             />
         </Tabs>
-    )
-}
+    );
+};
 
 export default TabLayout;

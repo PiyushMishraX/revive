@@ -1,7 +1,21 @@
-import Home from "./(tabs)/Home";
+import { Redirect } from "expo-router";
+import { useAuth } from "@clerk/expo";
+import { ActivityIndicator, View } from "react-native";
 
- export default function App() {
-  return (
-      <Home />
-  )
+export default function Index() {
+  const { isLoaded, isSignedIn } = useAuth();
+
+  if (!isLoaded) {
+    return (
+      <View className="flex-1 items-center justify-center bg-background">
+        <ActivityIndicator size="large" color="#ea7a53" />
+      </View>
+    );
+  }
+
+  if (!isSignedIn) {
+    return <Redirect href="/(auth)/sign-in" />;
+  }
+
+  return <Redirect href="/(tabs)/Home" />;
 }
